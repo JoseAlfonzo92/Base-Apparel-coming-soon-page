@@ -25,6 +25,17 @@ form.addEventListener('submit', (e) => {
   emailInput.value = '';
 });
 
+// Live validation: remove error state as user types valid email
+emailInput.addEventListener('input', () => {
+  const email = emailInput.value.trim();
+
+  if (emailRegex.test(email)) {
+    emailInput.classList.remove('error');
+    errorMessage.style.display = 'none';
+    errorIcon.style.display = 'none';
+  }
+});
+
 function clearFeedback() {
   emailInput.classList.remove('error');
   errorMessage.classList.remove('success');
